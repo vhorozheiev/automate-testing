@@ -1,0 +1,11 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "demo",
+  "author": "Horozheieve V.V.",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {}
+}
