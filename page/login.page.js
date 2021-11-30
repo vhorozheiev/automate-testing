@@ -1,5 +1,4 @@
 class LoginPage {
-  
   get emailField() {
     return $("#email");
   }
@@ -8,6 +7,13 @@ class LoginPage {
   }
   get loginBtn() {
     return $("button#loginButton");
+  }
+  get closePopupBtn() {
+    return $("button.close-dialog");
+  }
+  async open() {
+    await browser.url(`http://localhost:3000/#/login`);
+    await this.closePopupBtn.click();
   }
 
   async loginIn(email, pass) {
