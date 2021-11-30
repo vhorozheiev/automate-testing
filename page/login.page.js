@@ -1,4 +1,5 @@
 class LoginPage {
+  
   get emailField() {
     return $("#email");
   }

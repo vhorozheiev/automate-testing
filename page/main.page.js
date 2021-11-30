@@ -1,4 +1,5 @@
 class MainPage {
+  
   get accountMenuBtn() {
     return $("#navbarAccount");
   }
