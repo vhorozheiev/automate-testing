@@ -24,8 +24,8 @@ exports.config = {
     [
     //create user with user@test.com and pass - user123
     "./test/specs/negativeLoginTest.js",
-    "./test/specs/positiveLoginTets.js",
-    "./test/specs/socialLinkTest.js",
+    //"./test/specs/positiveLoginTets.js",
+    //"./test/specs/socialLinkTest.js",
     ]
   ],
   // Patterns to exclude.
@@ -62,6 +62,7 @@ exports.config = {
       maxInstances: 5,
       browserName: "chrome",
       acceptInsecureCerts: true,
+      
       // If outputDir is provided WebdriverIO can capture driver session logs
       // it is possible to configure which logTypes to include/exclude.
       // excludeDriverLogs: ['*'], // pass '*' to exclude all driver session logs
@@ -144,7 +145,7 @@ exports.config = {
   // See the full list at http://mochajs.org/
   mochaOpts: {
     ui: "bdd",
-    timeout: 60000,
+    timeout: 80000,
   },
   //
   // =====
@@ -209,6 +210,7 @@ exports.config = {
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
   // beforeTest: function (test, context) {
+  //   browser.setWindowSize(1920, 1080);
   // },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
