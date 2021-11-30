@@ -6,11 +6,10 @@ describe("Login test application", () => {
     await mainPage.open();
     await mainPage.openAccountMenu();
     await mainPage.navigateToLogin();
-
     //login page
-    await loginPage.loginIn("user@test.com", "user123");
-
+    await loginPage.loginIn("user@test.com", "user");
     //expect to negative
     await expect($("div.error")).toHaveText("Invalid email or password.");
+    await browser.reloadSession();
   });
 });

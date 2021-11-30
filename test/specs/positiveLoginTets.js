@@ -6,15 +6,11 @@ describe("Login test application", () => {
     await mainPage.open();
     await mainPage.openAccountMenu();
     await mainPage.navigateToLogin();
-
     //login page
     await loginPage.loginIn("user@test.com", "user123");
-
-
     //expect to positive test
     await mainPage.openAccountMenu();
-
-    await browser.pause(2000);
     await expect($('#navbarLogoutButton')).toBeDisplayed();
+    await browser.reloadSession();
   });
 });

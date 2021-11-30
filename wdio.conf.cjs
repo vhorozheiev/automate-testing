@@ -20,7 +20,14 @@ exports.config = {
   // then the current working directory is where your `package.json` resides, so `wdio`
   // will be called from there.
   //
-  specs: ["./test/specs/socialMediaLinksTest.js"],
+  specs: [
+    [
+    //create user with user@test.com and pass - user123
+    "./test/specs/negativeLoginTest.js",
+    "./test/specs/positiveLoginTets.js",
+    "./test/specs/socialLinkTest.js",
+    ]
+  ],
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -183,7 +190,7 @@ exports.config = {
    * @param {Object}         browser      instance of created browser/device session
    */
   before: function (capabilities, specs) {
-      console.log(`test ${specs} has been started`)
+    console.log(`test ${specs} has been started`);
   },
   /**
    * Runs before a WebdriverIO command gets executed.
@@ -233,6 +240,7 @@ exports.config = {
    * @param {Object} suite suite details
    */
   // afterSuite: function (suite) {
+  //   
   // },
   /**
    * Runs after a WebdriverIO command gets executed
