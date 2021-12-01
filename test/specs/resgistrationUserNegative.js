@@ -8,7 +8,7 @@ let pass = chance.string({ length: 4 });
 let secureAnswer = chance.color();
 
 describe("Register new user", () => {
-  it("should register new user with valid credentials", async () => {
+  it("shouldn't register new user with invalid credentials", async () => {
     //register new user
     await loginPage.open();
     await userRegistrationPage.addNewCustomer();
