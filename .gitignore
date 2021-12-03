@@ -1,2 +1,7 @@
 /node_modules
+/test/specs/editeProfile.js
+/test/specs/registrationUserNegative.js
+/test/specs/registrationUserPositive.js
+/page/userProfile.page.js
+/page/userRegistration.page.js
 package-lock.json
