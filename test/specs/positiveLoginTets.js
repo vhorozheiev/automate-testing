@@ -11,6 +11,5 @@ describe("Login test application", () => {
     //expect to positive test
     await mainPage.openAccountMenu();
     await expect($('#navbarLogoutButton')).toBeDisplayed();
-    //await browser.reloadSession();
   });
 });

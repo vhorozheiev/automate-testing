@@ -7,6 +7,7 @@ describe("Social media links testing", () => {
     await socialPage.openAboutUs();
     await socialPage.goToFacebook();
     await socialPage.switchWindow(`OWASP Juice Shop - Главная | Facebook`);
+    //expect browser to have a title
     await expect(browser).toHaveTitle(`OWASP Juice Shop - Главная | Facebook`);
   });
 });
