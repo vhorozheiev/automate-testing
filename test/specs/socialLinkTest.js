@@ -6,8 +6,7 @@ describe("Social media links testing", () => {
     await socialPage.openSideNav();
     await socialPage.openAboutUs();
     await socialPage.goToFacebook();
-    await socialPage.switchWidnowWithTitle(`OWASP Juice Shop - Главная | Facebook`);
+    await socialPage.switchWindow(`OWASP Juice Shop - Главная | Facebook`);
     await expect(browser).toHaveTitle(`OWASP Juice Shop - Главная | Facebook`);
-    //await browser.reloadSession();
   });
 });

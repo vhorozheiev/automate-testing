@@ -22,13 +22,13 @@ exports.config = {
   //
   specs: [
     //create user with user@test.com and pass - user123
-    //"./test/specs/resgistrationUserPositive.js",
+    //"./test/specs/resgistrationUserPositive.js"
     //"./test/specs/resgistrationUserNegative.js",
     //"./test/specs/negativeLoginTest.js",
     //you need create new user before run this test
     //"./test/specs/positiveLoginTets.js",
-    //"./test/specs/socialLinkTest.js",
-    "./test/specs/editProfile.js",
+    "./test/specs/socialLinkTest.js",
+    //"./test/specs/editProfile.js",
   ],
   // Patterns to exclude.
   exclude: [

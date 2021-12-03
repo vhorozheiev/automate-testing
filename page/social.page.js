@@ -1,12 +1,18 @@
-class spcialPage {
+import BasePage from "../base/basePage.js";
+import Button from "../elements/button.js";
+
+class spcialPage extends BasePage {
   get sideNavBtn() {
-    return $('button[aria-label="Open Sidenav"]');
+    return new Button($('button[aria-label="Open Sidenav"]'), "sideNav button");
   }
   get aboutUsBtn() {
-    return $("a[routerlink = '/about']");
+    return new Button($("a[routerlink = '/about']"), "about us button");
   }
   get facebookBtn() {
-    return $('a[href*="https://www.facebook.com/"]');
+    return new Button(
+      $('a[href*="https://www.facebook.com/"]'),
+      "facebook button"
+    );
   }
   async openSideNav() {
     await this.sideNavBtn.click();
@@ -18,7 +24,7 @@ class spcialPage {
   async goToFacebook() {
     await this.facebookBtn.click();
   }
-  async switchWidnowWithTitle(windowTitle) {
+  async switchWindow(windowTitle) {
     let currentWindow = await browser.getWindowHandle();
     for (let handle of await browser.getWindowHandles()) {
       await browser.switchToWindow(handle);
