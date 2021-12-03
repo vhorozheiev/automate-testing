@@ -14,7 +14,7 @@ describe("Register new user", () => {
     await loginPage.open();
     await userRegistrationPage.addNewCustomer();
     await userRegistrationPage.fillRegistrationForm(email, pass, secureAnswer, option);
-    //expect to negative test
+    //expect to show error email and pass
     await expect($("div#registration-form mat-error").isDesplayed());
   });
 });
