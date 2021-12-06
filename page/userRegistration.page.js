@@ -2,6 +2,7 @@ import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
 import Input from "../elements/input.js";
 import Dropdown from "../elements/dropdown.js";
+import Div from "../elements/div.js";
 
 class UserRegistration extends BasePage {
   get addNewCustomerLink() {
@@ -34,6 +35,9 @@ class UserRegistration extends BasePage {
   get logoutButton() {
     return new Button($("#navbarLogoutButton"), "navbar logout button");
   }
+  get errorMsg(){
+    return new Div($("div#registration-form mat-error"), "div with error massage");
+  }
 
   async addNewCustomer() {
     await browser.waitUntil(
@@ -53,8 +57,8 @@ class UserRegistration extends BasePage {
     await this.registrationButton.click();
   }
 
-  async isDisplayed() {
-    return await this.logoutButton.isDisplayed();
+  async isDisplayed(element) {
+    return await element.isDisplayed();
   }
 }
 

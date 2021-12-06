@@ -16,5 +16,8 @@ describe("Register new user", () => {
     await userRegistrationPage.fillRegistrationForm(email, pass, secureAnswer, option);
     //expect to show error email and pass
     await expect($("div#registration-form mat-error").isDesplayed());
+    
+    //isn't working
+    //await expect (userRegistrationPage.errorMsg).toBeDisplayed();
   });
 });
