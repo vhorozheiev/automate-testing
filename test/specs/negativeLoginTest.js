@@ -2,6 +2,7 @@ import loginPage from "../../page/login.page.js";
 import mainPage from "../../page/main.page.js";
 describe("Login test application", () => {
   it("shouldn't login with invalid credentials", async () => {
+    await allure.addStep(`Try to log in with invalid email and pass`);
     //main page
     await mainPage.open();
     await mainPage.openAccountMenu();
@@ -10,6 +11,6 @@ describe("Login test application", () => {
     await loginPage.loginIn("user@test.com", "user");
     //expect to negative
     await expect($("div.error")).toHaveText("Invalid email or password.");
-    //await browser.reloadSession();
+    await allure.endStep(`passed`);
   });
 });

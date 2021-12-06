@@ -1,6 +1,7 @@
 import Input from "../elements/input.js";
 import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
+import AllureReporter from "@wdio/allure-reporter";
 
 class LoginPage extends BasePage {
   get emailField() {
@@ -17,7 +18,7 @@ class LoginPage extends BasePage {
   }
   async open() {
     await super.open(`http://localhost:3000/#/login`);
-    await this.closePopupBtn.click();
+    if (await this.closePopupBtn.isExisting()) await this.closePopupBtn.click();
   }
 
   async loginIn(email, pass) {
