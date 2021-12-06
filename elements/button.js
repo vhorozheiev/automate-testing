@@ -4,4 +4,7 @@ export default class Button extends BaseElement {
   async isClickable() {
     return await this.wdioElement.isClickable();
   }
+  async isDisplayed(){
+    return await this.wdioElement.isDisplayed();
+  }
 }

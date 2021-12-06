@@ -31,6 +31,9 @@ class UserRegistration extends BasePage {
   get registrationButton() {
     return new Button($("button#registerButton"), "registration button");
   }
+  get logoutButton() {
+    return new Button($("#navbarLogoutButton"), "navbar logout button");
+  }
 
   async addNewCustomer() {
     await browser.waitUntil(
@@ -48,6 +51,10 @@ class UserRegistration extends BasePage {
   }
   async registrationButtonClick() {
     await this.registrationButton.click();
+  }
+
+  async isDisplayed() {
+    return await this.logoutButton.isDisplayed();
   }
 }
 

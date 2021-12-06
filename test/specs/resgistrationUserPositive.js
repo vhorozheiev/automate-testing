@@ -20,6 +20,7 @@ describe("Register new user", () => {
     await loginPage.loginIn(email, pass);
     await mainPage.openAccountMenu();
     //expect to positive test
-    await expect($("#navbarLogoutButton")).toBeDisplayed();
+    await expect(await userRegistrationPage.isDisplayed()).toEqual(true);
+    //await expect($("#navbarLogoutButton")).toBeDisplayed();
   });
 });
