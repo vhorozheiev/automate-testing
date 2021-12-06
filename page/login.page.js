@@ -1,6 +1,7 @@
 import Input from "../elements/input.js";
 import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
+import Div from "../elements/div.js";
 
 class LoginPage extends BasePage {
   get emailField() {
@@ -16,7 +17,10 @@ class LoginPage extends BasePage {
     return new Button($("button.close-dialog"), "close popup button");
   }
   get logoutBtn(){
-    return new Button($('#navbarLogoutButton'));
+    return new Button($('#navbarLogoutButton'), "log out button");
+  }
+  get errorMsg(){
+    return new Div($("//div[contains(@class, 'error')]"), "div element with error");
   }
   async open() {
     await super.open(`http://localhost:3000/#/login`);
