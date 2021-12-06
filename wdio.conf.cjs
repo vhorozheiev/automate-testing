@@ -26,8 +26,8 @@ exports.config = {
     //"./test/specs/resgistrationUserNegative.js",
     //"./test/specs/negativeLoginTest.js",
     //you need create new user before run this test
-    //"./test/specs/positiveLoginTets.js",
-    "./test/specs/openSocialLinkTest.js",
+    "./test/specs/positiveLoginTets.js",
+    //"./test/specs/openSocialLinkTest.js",
     //"./test/specs/editProfile.js",
   ],
   // Patterns to exclude.

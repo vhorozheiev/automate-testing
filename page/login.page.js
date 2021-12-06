@@ -15,6 +15,9 @@ class LoginPage extends BasePage {
   get closePopupBtn() {
     return new Button($("button.close-dialog"), "close popup button");
   }
+  get logoutBtn(){
+    return new Button($('#navbarLogoutButton'));
+  }
   async open() {
     await super.open(`http://localhost:3000/#/login`);
     await this.closePopupBtn.click();
