@@ -2,6 +2,7 @@ import Input from "../elements/input.js";
 import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
 import Div from "../elements/div.js";
+import AllureReporter from "@wdio/allure-reporter";
 
 class LoginPage extends BasePage {
   get emailField() {

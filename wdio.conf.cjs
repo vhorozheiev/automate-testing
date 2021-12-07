@@ -27,10 +27,14 @@ exports.config = {
     //you need create new user before run this test
     //"./test/specs/positiveLoginTets.js",
     //"./test/specs/openSocialLinkTest.js",
+<<<<<<< HEAD
 =======
     //"./test/specs/resgistrationUserPositive.js",
     "./test/specs/resgistrationUserNegative.js",
 >>>>>>> origin/015-webdriverio
+=======
+    "./test/specs/editProfile.js",
+>>>>>>> demo-project
   ],
   // Patterns to exclude.
   exclude: [
@@ -142,7 +146,17 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
+  reporters: [
+    "spec",
+    [
+      "allure",
+      {
+        outputDir: "allure-results",
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: true,
+      },
+    ],
+  ],
 
   //
   // Options to be passed to Mocha.
@@ -195,6 +209,8 @@ exports.config = {
    * @param {Object}         browser      instance of created browser/device session
    */
   before: function (capabilities, specs) {
+    const allureReporter = require('@wdio/allure-reporter').default;
+    global.allure = allureReporter;
     console.log(`test ${specs} has been started`);
   },
   /**

@@ -5,4 +5,7 @@ export default class Input extends BaseElement {
     console.log(`Enter "${value}" into "${this.elementName}" input`);
     await this.wdioElement.setValue(value);
   }
+  async haveProperty(property, expectedProperty){ 
+    return await this.wdioElement.toHaveElementProperty(property, expectedProperty);
+  }
 }

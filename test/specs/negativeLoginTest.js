@@ -3,6 +3,7 @@ import loginPage from "../../page/login.page.js";
 
 describe("Login test application", () => {
   it("shouldn't login with invalid credentials", async () => {
+    await allure.addStep(`Try to log in with invalid email and pass`);
     //main page
     await mainPage.open();
     await mainPage.openAccountMenu();
@@ -11,9 +12,9 @@ describe("Login test application", () => {
     await loginPage.loginIn("user@test.com", "user");
     //expect to negative
     await expect($("//div[contains(@class, 'error')]")).toHaveText("Invalid email or password.");
-
     //why doesn't this option work? I don't understand it.
     //await expect(loginPage.errorMsg).toHaveText("Invalid email or password.");
+    await allure.endStep(`passed`);
   });
 });
 
