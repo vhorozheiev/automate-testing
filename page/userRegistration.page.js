@@ -40,25 +40,33 @@ class UserRegistration extends BasePage {
   }
 
   async addNewCustomer() {
+    await allure.addStep(`Try to click on the ${this.addNewCustomerLink}`)
     await browser.waitUntil(
       async () => await this.addNewCustomerLink.isClickable()
     );
     await this.addNewCustomerLink.click();
+    await allure.endStep(`passed`);
   }
 
   async fillRegistrationForm(email, pass, secureAnswer, option) {
+    await allure.addStep(`Fill the form with data: ${email}, ${pass}, ${secureAnswer}, ${option}`);
     await this.inputEmailField.setValue(email);
     await this.inputPasswordField.setValue(pass);
     await this.inputReapetPasswordField.setValue(pass);
     await this.dropdownSecureQuestion.select(option);
     await this.secureAnswerQuestionField.setValue(secureAnswer);
+    await allure.endStep(`passed`);
   }
   async registrationButtonClick() {
+    await allure.addStep(`Try to ${this.registrationButton} clikc`)
     await this.registrationButton.click();
+    await allure.endStep(`passed`);
   }
 
   async isDisplayed(element) {
+    await allure.addStep(`Check that ${element} is displayed?`)
     return await element.isDisplayed();
+    await allure.endStep(`passed`)
   }
 }
 

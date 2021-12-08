@@ -23,18 +23,26 @@ class UserProfile extends BasePage {
   }
 
   async openUserProfile() {
+    await allure.addStep(`Try to click on the ${this.userProfileBtn}`);
     await this.userProfileBtn.click();
+    await allure.endStep(`passed`);
   }
   async changeUserName(userName) {
+    await allure.addStep(`Try to change user name to ${userName}`);
     await this.userNameInput.setValue(userName);
     await this.setUserNameBtn.click();
+    await allure.endStep(`passed`);
   }
   async changeUserPhoto(avatar) {
+    await allure.addStep(`Try to change user photo`)
     await this.imageUrlInput.setValue(avatar);
     await this.linkImageBtn.click();
+    await allure.endStep(`passed`);
   }
   async userNameToHaveProperty(property, expectedProperty) {
+    await allure.addStep(`Check that ${this.userNameInput} have a expected property`)
     return await this.userNameInput.haveProperty(property, expectedProperty);
+    //!!!!!///await allure.endStep();
   }
 }
 export default new UserProfile();

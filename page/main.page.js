@@ -13,15 +13,21 @@ class MainPage extends BasePage {
     return new Button($("button.close-dialog"), "close popup button");
   }
 
-  async open() {
-    await super.open(`http://localhost:3000/#/`);
+  async open(url) {
+    await allure.addStep(`Try to open ${url}`);
+    await super.open(url);
     if (await this.closePopupBtn.isExisting()) await this.closePopupBtn.click();
+    await allure.endStep(`passed`);
   }
   async openAccountMenu() {
+    await allure.addStep(`Try to click on the ${this.accountMenuBtn}`);
     await this.accountMenuBtn.click();
+    await allure.endStep(`passed`);
   }
   async navigateToLogin() {
+    await allure.addStep(`Try to click on the ${this.loginBtn}`);
     await this.loginBtn.click();
+    await allure.endStep(`passed`);
   }
 }
 export default new MainPage();

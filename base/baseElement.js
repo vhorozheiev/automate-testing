@@ -10,4 +10,7 @@ export default class BaseElement {
   async isExisting(){
     return await this.wdioElement.isExisting();
   }
+  async isDisplayed(){
+    return await this.wdioElement.isDisplayed();
+}
 }

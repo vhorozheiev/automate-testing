@@ -15,16 +15,23 @@ class spcialPage extends BasePage {
     );
   }
   async openSideNav() {
+    await allure.addStep(`Try to open side navigation menu`);
     await this.sideNavBtn.click();
+    await allure.endStep(`passed`);
   }
   async openAboutUs() {
+    await allure.addStep(`Try to open 'About us' page`);
     await browser.waitUntil(() => this.aboutUsBtn.isClickable());
     await this.aboutUsBtn.click();
+    await allure.endStep(`passed`);
   }
   async goToFacebook() {
+    await allure.addStep(`Try to click on the ${this.facebookBtn} to open facebook`)
     await this.facebookBtn.click();
+    await allure.endStep(`passed`);
   }
   async switchWindow(windowTitle) {
+    await allure.addStep(`Try to swith to another window in browser`)
     let currentWindow = await browser.getWindowHandle();
     for (let handle of await browser.getWindowHandles()) {
       await browser.switchToWindow(handle);
@@ -33,6 +40,7 @@ class spcialPage extends BasePage {
       }
     }
     await browser.switchToWindow(currentWindow);
+    await allure.endStep(`passed`);
     throw new Error(`Window with title "${windowTitle}" was not found`);
   }
 }

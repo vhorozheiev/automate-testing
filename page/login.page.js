@@ -2,7 +2,6 @@ import Input from "../elements/input.js";
 import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
 import Div from "../elements/div.js";
-import AllureReporter from "@wdio/allure-reporter";
 
 class LoginPage extends BasePage {
   get emailField() {
@@ -23,15 +22,19 @@ class LoginPage extends BasePage {
   get errorMsg(){
     return new Div($("//div[contains(@class, 'error')]"), "div element with error");
   }
-  async open() {
-    await super.open(`http://localhost:3000/#/login`);
+  async open(url) {
+    await allure.addStep(`Try to open url`);
+    await super.open(url);
     if (await this.closePopupBtn.isExisting()) await this.closePopupBtn.click();
+    await allure.endStep('passed');
   }
 
   async loginIn(email, pass) {
+    await allure.addStep(`Try to login with ${email} and ${pass}`);
     await this.emailField.setValue(email);
     await this.passwordField.setValue(pass);
     await this.loginBtn.click();
+    await allure.endStep(`passed`);
   }
 }
 

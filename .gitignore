@@ -5,3 +5,5 @@
 /page/userProfile.page.js
 /page/userRegistration.page.js
 package-lock.json
+/allure-report
+/allure-results

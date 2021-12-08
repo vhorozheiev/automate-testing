@@ -3,15 +3,11 @@ import mainPage from "../../page/main.page.js";
 
 describe("Login test application", () => {
   it("should login with valid credentials", async () => {
-    //main page
-    await mainPage.open();
-    await mainPage.openAccountMenu();
-    await mainPage.navigateToLogin();
-    //login page
+    await loginPage.open(`http://localhost:3000/#/login`);
     await loginPage.loginIn("user@test.com", "user123");
     //expect to positive test
     await mainPage.openAccountMenu();
-    //await expect(await loginPage.logoutBtn.isDisplayed()).toEqual(true);
     await expect(loginPage.logoutBtn).toBeDisplayed();
+    //await expect(await loginPage.logoutBtn.isDisplayed()).toEqual(true);
   });
 });

@@ -21,20 +21,14 @@ exports.config = {
   // will be called from there.
   //
   specs: [
-<<<<<<< HEAD
     //create user with user@test.com and pass - user123
     "./test/specs/negativeLoginTest.js",
     //you need create new user before run this test
-    //"./test/specs/positiveLoginTets.js",
+    "./test/specs/positiveLoginTets.js",
     //"./test/specs/openSocialLinkTest.js",
-<<<<<<< HEAD
-=======
     //"./test/specs/resgistrationUserPositive.js",
-    "./test/specs/resgistrationUserNegative.js",
->>>>>>> origin/015-webdriverio
-=======
-    "./test/specs/editProfile.js",
->>>>>>> demo-project
+    //"./test/specs/resgistrationUserNegative.js",
+    //"./test/specs/editProfile.js",
   ],
   // Patterns to exclude.
   exclude: [
@@ -153,7 +147,7 @@ exports.config = {
       {
         outputDir: "allure-results",
         disableWebdriverStepsReporting: true,
-        disableWebdriverScreenshotsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
       },
     ],
   ],
@@ -229,9 +223,9 @@ exports.config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  // beforeTest: function (test, context) {
-  //   browser.setWindowSize(1920, 1080);
-  // },
+  beforeTest: function (test, context) {
+    browser.maximizeWindow();
+  },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
    * beforeEach in Mocha)
@@ -254,8 +248,12 @@ exports.config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-  // },
+  afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    if(!passed){
+      let screen = await browser.takeScreenshot();
+      await allureReporter.addAttachment("MyScreenshot", Buffer.from(screen, "base64"), "img/png");
+    }
+  },
 
   /**
    * Hook that gets executed after the suite has ended
