@@ -13,7 +13,7 @@ let option = "Mother's maiden name?";
 describe("Register new user", () => {
   it("should register new user with valid credentials", async () => {
     //register new user
-    await loginPage.open();
+    await loginPage.open(`http://localhost:3000/#/login`);
     await userRegistrationPage.addNewCustomer();
     await userRegistrationPage.fillRegistrationForm(email, pass, secureAnswer, option);
     await userRegistrationPage.registrationButtonClick();

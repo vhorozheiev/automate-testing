@@ -11,7 +11,7 @@ let option = "Mother's maiden name?";
 describe("Register new user", () => {
   it("shouldn't register new user with invalid credentials", async () => {
     //register new user
-    await loginPage.open();
+    await loginPage.open(`http://localhost:3000/#/login`);
     await userRegistrationPage.addNewCustomer();
     await userRegistrationPage.fillRegistrationForm(email, pass, secureAnswer, option);
     //expect to show error email and pass

@@ -1,6 +1,7 @@
 import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
 import Input from "../elements/input.js";
+import Image from "../elements/image.js";
 
 class UserProfile extends BasePage {
   get userProfileBtn() {
@@ -14,6 +15,9 @@ class UserProfile extends BasePage {
   }
   get setUserNameBtn() {
     return new Button($('//button[@id = "submit"]'), "set user name button");
+  }
+  get userProfileImage(){
+    return new Image($('//img[@class = "img-rounded"]'), "user profile image");
   }
   get imageUrlInput() {
     return new Input($('//input[@id = "url"]'), "image url input");
@@ -42,7 +46,7 @@ class UserProfile extends BasePage {
   async userNameToHaveProperty(property, expectedProperty) {
     await allure.addStep(`Check that ${this.userNameInput} have a expected property`)
     return await this.userNameInput.haveProperty(property, expectedProperty);
-    //!!!!!///await allure.endStep();
+    await allure.endStep();
   }
 }
 export default new UserProfile();

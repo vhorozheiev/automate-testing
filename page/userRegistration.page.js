@@ -62,12 +62,6 @@ class UserRegistration extends BasePage {
     await this.registrationButton.click();
     await allure.endStep(`passed`);
   }
-
-  async isDisplayed(element) {
-    await allure.addStep(`Check that ${element} is displayed?`)
-    return await element.isDisplayed();
-    await allure.endStep(`passed`)
-  }
 }
 
 export default new UserRegistration();

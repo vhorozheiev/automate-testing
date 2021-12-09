@@ -7,10 +7,13 @@ export default class BaseElement {
     console.log(`click on the element ${this.elementName}`);
     await this.wdioElement.click();
   }
+  async haveProperty(property, expectedProperty){ 
+    return await this.wdioElement.toHaveElementProperty(property, expectedProperty);
+  }
   async isExisting(){
     return await this.wdioElement.isExisting();
   }
-  async isDisplayed(){
-    return await this.wdioElement.isDisplayed();
-}
+  async waitForDisplayed(){
+    return await this.wdioElement.waitForDisplayed();
+  }
 }
