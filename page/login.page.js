@@ -28,7 +28,6 @@ class LoginPage extends BasePage {
     if (await this.closePopupBtn.isExisting()) await this.closePopupBtn.click();
     await allure.endStep('passed');
   }
-
   async loginIn(email, pass) {
     await allure.addStep(`Try to login with ${email} and ${pass}`);
     await this.emailField.setValue(email);
