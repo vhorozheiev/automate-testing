@@ -5,10 +5,7 @@ describe("Login test application", () => {
     await loginPage.open(`http://localhost:3000/#/login`);
     await loginPage.loginIn("user@test.com", "user");
     //expect to negative
-    await expect($("//div[contains(@class, 'error')]")).toHaveText("Invalid email or password.");
-
-    //why doesn't this option work? I don't understand it.
-    //await expect(loginPage.errorMsg).toHaveText("Invalid email or password.");
+    await expect(loginPage.errorMsg).toBeDisplayed();
+    //await expect($("//div[contains(@class, 'error')]")).toBeDisplayed();
   });
 });
-

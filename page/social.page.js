@@ -9,10 +9,7 @@ class spcialPage extends BasePage {
     return new Button($("a[routerlink = '/about']"), "about us button");
   }
   get facebookBtn() {
-    return new Button(
-      $('a[href*="https://www.facebook.com/"]'),
-      "facebook button"
-    );
+    return new Button($('a[href*="https://www.facebook.com/"]'),"facebook button");
   }
   async openSideNav() {
     await allure.addStep(`Try to open side navigation menu`);
