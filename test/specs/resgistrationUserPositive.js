@@ -13,15 +13,14 @@ let option = "Mother's maiden name?";
 describe("Register new user", () => {
   it("should register new user with valid credentials", async () => {
     //register new user
-    await loginPage.open();
+    await loginPage.open(`http://localhost:3000/#/login`);
     await userRegistrationPage.addNewCustomer();
     await userRegistrationPage.fillRegistrationForm(email, pass, secureAnswer, option);
     await userRegistrationPage.registrationButtonClick();
     await loginPage.loginIn(email, pass);
     await mainPage.openAccountMenu();
     //expect to positive test
-    await expect(userRegistrationPage.logoutButton).toBeDisplayed();
-    //await expect(await userRegistrationPage.isDisplayed(userRegistrationPage.logoutButton)).toEqual(true);
+    await expect(await userRegistrationPage.logoutButton.isClickable()).toEqual(true);
     //await expect($("#navbarLogoutButton")).toBeDisplayed();
   });
 });

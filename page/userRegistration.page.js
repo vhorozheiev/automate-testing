@@ -6,10 +6,7 @@ import Div from "../elements/div.js";
 
 class UserRegistration extends BasePage {
   get addNewCustomerLink() {
-    return new Button(
-      $("div#newCustomerLink > a.primary-link"),
-      "add new customer button"
-    );
+    return new Button($("div#newCustomerLink > a.primary-link"),"add new customer button");
   }
   get inputEmailField() {
     return new Input($("input#emailControl"), "email input");
@@ -21,10 +18,7 @@ class UserRegistration extends BasePage {
     return new Input($("input#repeatPasswordControl"), "repeat password input");
   }
   get dropdownSecureQuestion() {
-    return new Dropdown(
-      $('[name = "securityQuestion"]'),
-      "dropdown with security questions"
-    );
+    return new Dropdown($('[name = "securityQuestion"]'),"dropdown with security questions");
   }
   get secureAnswerQuestionField() {
     return new Input($("input#securityAnswerControl"), "security answer input");
@@ -35,17 +29,17 @@ class UserRegistration extends BasePage {
   get logoutButton() {
     return new Button($("#navbarLogoutButton"), "navbar logout button");
   }
-  get errorMsg(){
-    return new Div($("div#registration-form mat-error"), "div with error massage");
+  get errorMsg() {
+    return new Div($("div#registration-form mat-error"),"div with error massage");
   }
 
+  async getBaseElement() {
+    return new Button(this.addNewCustomerLink, "Base element");
+  }
   async addNewCustomer() {
-    await browser.waitUntil(
-      async () => await this.addNewCustomerLink.isClickable()
-    );
+    await (await this.getBaseElement()).waitForDisplayed();
     await this.addNewCustomerLink.click();
   }
-
   async fillRegistrationForm(email, pass, secureAnswer, option) {
     await this.inputEmailField.setValue(email);
     await this.inputPasswordField.setValue(pass);
@@ -55,10 +49,6 @@ class UserRegistration extends BasePage {
   }
   async registrationButtonClick() {
     await this.registrationButton.click();
-  }
-
-  async isDisplayed(element) {
-    return await element.isDisplayed();
   }
 }
 

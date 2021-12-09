@@ -21,7 +21,7 @@ exports.config = {
   // will be called from there.
   //
   specs: [
-    //"./test/specs/resgistrationUserPositive.js",
+    "./test/specs/resgistrationUserPositive.js",
     "./test/specs/resgistrationUserNegative.js",
   ],
   // Patterns to exclude.
@@ -134,7 +134,17 @@ exports.config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: ["spec"],
+  reporters: [
+    "spec",
+    [
+      "allure",
+      {
+        outputDir: "allure-results",
+        disableWebdriverStepsReporting: true,
+        disableWebdriverScreenshotsReporting: false,
+      },
+    ],
+  ],
 
   //
   // Options to be passed to Mocha.
@@ -187,6 +197,8 @@ exports.config = {
    * @param {Object}         browser      instance of created browser/device session
    */
   before: function (capabilities, specs) {
+    const allureReporter = require('@wdio/allure-reporter').default;
+    global.allure = allureReporter;
     console.log(`test ${specs} has been started`);
   },
   /**
@@ -205,9 +217,9 @@ exports.config = {
   /**
    * Function to be executed before a test (in Mocha/Jasmine) starts.
    */
-  // beforeTest: function (test, context) {
-  //   browser.setWindowSize(1920, 1080);
-  // },
+  beforeTest: function (test, context) {
+    browser.maximizeWindow();
+  },
   /**
    * Hook that gets executed _before_ a hook within the suite starts (e.g. runs before calling
    * beforeEach in Mocha)
@@ -230,8 +242,12 @@ exports.config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-  // },
+  afterTest: async function(test, context, { error, result, duration, passed, retries }) {
+    if(!passed){
+      let screen = await browser.takeScreenshot();
+      await allureReporter.addAttachment("MyScreenshot", Buffer.from(screen, "base64"), "img/png");
+    }
+  },
 
   /**
    * Hook that gets executed after the suite has ended

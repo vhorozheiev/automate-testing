@@ -15,11 +15,10 @@ class LoginPage extends BasePage {
   get closePopupBtn() {
     return new Button($("button.close-dialog"), "close popup button");
   }
-  async open() {
-    await super.open(`http://localhost:3000/#/login`);
+  async open(url) {
+    await super.open(url);
     if (await this.closePopupBtn.isExisting()) await this.closePopupBtn.click();
   }
-
   async loginIn(email, pass) {
     await this.emailField.setValue(email);
     await this.passwordField.setValue(pass);

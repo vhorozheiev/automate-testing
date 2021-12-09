@@ -10,4 +10,12 @@ export default class BaseElement {
   async isExisting(){
     return await this.wdioElement.isExisting();
   }
+  async isDisplayed(){
+    return await this.wdioElement.isDisplayed();
+  }
+  async waitForDisplayed(){
+    await browser.waitUntil(
+      async () => await this.wdioElement.isClickable()
+    );
+  }
 }
