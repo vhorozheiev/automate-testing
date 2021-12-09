@@ -6,7 +6,6 @@ import { Chance } from "chance";
 let chance = new Chance();
 let userName = chance.first();
 let avatar = chance.avatar({ protocol: "https" });
-//let defaultSrcValue ="http://localhost:3000/assets/public/images/uploads/default.jpg";
 let defaultSrcValue ="http://localhost:3000/assets/public/images/uploads/default.svg";
 
 describe("Edit user profile", () => {
@@ -24,6 +23,7 @@ describe("Edit user profile", () => {
     await expect(userProfilePage.userNameInput).toHaveElementProperty("value", userName);
     //change user photo and expect result
     await userProfilePage.changeUserPhoto(avatar);
+    //need to fix src problem
     await expect(userProfilePage.userProfileImage).not.toHaveElementProperty("src", defaultSrcValue);
   });
 });

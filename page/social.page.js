@@ -1,5 +1,6 @@
 import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
+import Image from "../elements/image.js";
 
 class spcialPage extends BasePage {
   get sideNavBtn() {
@@ -11,6 +12,12 @@ class spcialPage extends BasePage {
   get facebookBtn() {
     return new Button($('a[href*="https://www.facebook.com/"]'),"facebook button");
   }
+  get facebookLogoImage(){
+    return new Image($('//i[contains(@class, "logo")]'), "facebook logo image");
+  }
+  async getBaseElement() {
+    return new Button(this.aboutUsBtn, "Base element");
+  }
   async openSideNav() {
     await allure.addStep(`Try to open side navigation menu`);
     await this.sideNavBtn.click();
@@ -18,7 +25,7 @@ class spcialPage extends BasePage {
   }
   async openAboutUs() {
     await allure.addStep(`Try to open 'About us' page`);
-    await browser.waitUntil(() => this.aboutUsBtn.isClickable());
+    await (await this.getBaseElement()).waitForDisplayed();
     await this.aboutUsBtn.click();
     await allure.endStep(`passed`);
   }

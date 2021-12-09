@@ -20,7 +20,8 @@ describe("Register new user", () => {
     await loginPage.loginIn(email, pass);
     await mainPage.openAccountMenu();
     //expect to positive test
-    await expect(await userRegistrationPage.logoutButton.isClickable()).toEqual(true);
+    await expect (userRegistrationPage.logoutButton).toBeClickable();
+    //await expect(await userRegistrationPage.logoutButton.isClickable()).toEqual(true);
     //await expect($("#navbarLogoutButton")).toBeDisplayed();
   });
 });
