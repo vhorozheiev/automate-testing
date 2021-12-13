@@ -28,7 +28,8 @@ exports.config = {
     // "./test/specs/openSocialLinkTest.js",
     // "./test/specs/resgistrationUserPositive.js",
     // "./test/specs/resgistrationUserNegative.js",
-    "./test/specs/editProfileTest.js",
+    //"./test/specs/editProfileTest.js",
+    "./test/specs/apiTest.js",
   ],
   // Patterns to exclude.
   exclude: [
@@ -203,7 +204,7 @@ exports.config = {
    * @param {Object}         browser      instance of created browser/device session
    */
   before: function (capabilities, specs) {
-    const allureReporter = require('@wdio/allure-reporter').default;
+    const allureReporter = require("@wdio/allure-reporter").default;
     global.allure = allureReporter;
     console.log(`test ${specs} has been started`);
   },
@@ -248,10 +249,18 @@ exports.config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  afterTest: async function(test, context, { error, result, duration, passed, retries }) {
-    if(!passed){
+  afterTest: async function (
+    test,
+    context,
+    { error, result, duration, passed, retries }
+  ) {
+    if (!passed) {
       let screen = await browser.takeScreenshot();
-      await allureReporter.addAttachment("MyScreenshot", Buffer.from(screen, "base64"), "img/png");
+      await allure.addAttachment(
+        "MyScreenshot",
+        Buffer.from(screen, "base64"),
+        "img/png"
+      );
     }
   },
 

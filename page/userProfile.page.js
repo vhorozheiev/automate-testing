@@ -38,6 +38,8 @@ class UserProfile extends BasePage {
     await allure.addStep(`Try to change user photo`)
     await this.imageUrlInput.setValue(avatar);
     await this.linkImageBtn.click();
+    //we have to refresh the page because the src attribute won't change without this option
+    await browser.refresh();
     await allure.endStep(`passed`);
   }
 }
