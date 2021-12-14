@@ -7,6 +7,9 @@ export default class BaseElement {
     console.log(`click on the element ${this.elementName}`);
     await this.wdioElement.click();
   }
+  async getText(){
+    return await this.wdioElement.getText();
+  }
   async getProperty(propertyName){
     return await this.wdioElement.getProperty(propertyName);
   }
