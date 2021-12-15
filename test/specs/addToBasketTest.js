@@ -25,6 +25,9 @@ describe("Customer feedback", () => {
     await basketPage.clickToCheckOutButton();
     await basketPage.clickAddNewAddressButton();
     await basketPage.addNewAddressFillForm(country, name, mobileNumber, zipCode, address, city, state);
+    await basketPage.clickToSubmitButton();
+    await basketPage.clickToAddressRadioButton();
+    await basketPage.clcikToContinueButton();
     await browser.pause(3000);
   });
 });

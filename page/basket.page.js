@@ -37,6 +37,12 @@ class BasketPage extends BasePage {
   get submitBtn(){
       return new Button($('//button[@id = "submitButton"]'), "submit button");
   }
+  get addressRadioBtn(){
+      return new Button($('//mat-radio-button/label'), "radio button for check address option");
+  }
+  get continueBtn(){
+      return new Button($('//button[contains(@aria-label, "payment selection")]'), "continue button");
+  }
 
   async clickToCheckOutButton() {
     await this.checkOutBtn.waitForDisplayed();
@@ -58,6 +64,12 @@ class BasketPage extends BasePage {
   async clickToSubmitButton(){
       await this.submitBtn.waitForDisplayed();
       await this.submitBtn.click();
+  }
+  async clickToAddressRadioButton(){
+      await this.addressRadioBtn.click();
+  }
+  async clcikToContinueButton(){
+      await this.continueBtn.click();
   }
 }
 export default new BasketPage();
