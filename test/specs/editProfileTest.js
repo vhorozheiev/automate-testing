@@ -24,7 +24,7 @@ describe("Edit user profile", () => {
     //change user photo and expect result
     await userProfilePage.changeUserPhoto(avatar);
      //refresh the page because the src attribute won't change without this option
-     await browser.refresh();
+    await browser.refresh();
     await expect(userProfilePage.userProfileImage).not.toHaveElementProperty("src", defaultSrcValue);
   });
 });

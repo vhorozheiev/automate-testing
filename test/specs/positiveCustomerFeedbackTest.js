@@ -12,6 +12,8 @@ describe("Customer feedback", () => {
     await contactPage.setRating({ x: 0, y: 0 }, 1);
     await contactPage.getCaptchResult();
     await contactPage.clickSubmit();
+    //check thar rating equal to 3
+    await expect(contactPage.ratingSlider).toHaveAttributeContaining("aria-valuenow", "3");
     await expect(contactPage.thankYouForFeedback).toBeDisplayed();
   });
 });
