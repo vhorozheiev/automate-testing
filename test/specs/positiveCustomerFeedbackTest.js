@@ -12,7 +12,6 @@ describe("Customer feedback", () => {
     await contactPage.setRating({ x: 0, y: 0 }, 1);
     await contactPage.getCaptchResult();
     await contactPage.clickSubmit();
-    //need to fix
-    await expect (contactPage.thankYouForFeedbackIsDisplayed()).toBeDisplayed();
+    await expect(contactPage.thankYouForFeedback).toBeDisplayed();
   });
 });

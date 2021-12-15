@@ -2,6 +2,7 @@ import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
 import Input from "../elements/input.js";
 import Slider from "../elements/slider.js";
+import Div from "../elements/div.js";
 
 class ContactPage extends BasePage {
   get customerFeedbackBtn() {
@@ -17,7 +18,7 @@ class ContactPage extends BasePage {
     return new Slider($("mat-slider#rating"), "slider for rating");
   }
   get captcha() {
-    return new Button($("code#captcha"), "text with captcha");
+    return new Div($("code#captcha"), "text with captcha");
   }
   get captchaControl() {
     return new Input($("input#captchaControl"), "captcha control input");
@@ -26,7 +27,7 @@ class ContactPage extends BasePage {
     return new Button($("button#submitButton"), "submit button");
   }
   get thankYouForFeedback() {
-    return new Button($("simple-snack-bar.mat-simple-snackbar"));
+    return new Div($("simple-snack-bar.mat-simple-snackbar"));
   }
   async openFeedback() {
     await this.customerFeedbackBtn.waitForDisplayed();
@@ -45,9 +46,6 @@ class ContactPage extends BasePage {
   }
   async clickSubmit() {
     await this.submitBtn.click();
-  }
-  async thankYouForFeedbackIsDisplayed() {
-    await this.thankYouForFeedback.waitForDisplayed();
   }
 }
 

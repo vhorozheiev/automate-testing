@@ -30,7 +30,7 @@ exports.config = {
     //"./test/specs/resgistrationUserNegative.js",
     //"./test/specs/editProfileTest.js",
     //"./test/specs/apiLoginTest.js",
-    "./test/specs/customerFeedbackTest.js",
+    "./test/specs/positiveCustomerFeedbackTest.js",
   ],
   // Patterns to exclude.
   exclude: [
