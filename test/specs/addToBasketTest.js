@@ -6,11 +6,7 @@ import { Chance } from "chance";
 let chance = new Chance();
 let country = chance.country({ full: true });
 let name = chance.first();
-let mobileNumber = chance.phone({
-  country: "fr",
-  mobile: true,
-  formated: false,
-});
+let mobileNumber = chance.phone({country: "fr",mobile: true,formated: false,});
 let zipCode = chance.zip();
 let address = chance.address();
 let city = chance.city();
@@ -23,26 +19,16 @@ describe("Customer feedback", () => {
     await loginPage.open(`http://localhost:3000/#/login`);
     await loginPage.loginIn("user@test.com", "123qwe");
     await mainPage.open(`http://localhost:3000/#/`);
-    await mainPage.addToBasketItem();
-    await mainPage.goToBasket();
+    await basketPage.addToBasketItem();
+    await basketPage.goToBasket();
+    await basketPage.removeItemFromBasket();
+    await browser.pause(2000);
     await basketPage.clickToCheckOutButton();
     await basketPage.clickAddNewAddressButton();
-    await basketPage.addNewAddressFillForm(
-      country,
-      name,
-      mobileNumber,
-      zipCode,
-      address,
-      city,
-      state
-    );
-    // await basketPage.clickToAddressRadioButton();
-    // await basketPage.clcikToContinuePaymentButton();
+    await basketPage.addNewAddressFillForm(country,name,mobileNumber,zipCode,address,city,state);
     await basketPage.chooseDeliverySpeed();
-    // await basketPage.clickToContionueDeliveryButton();
     await basketPage.addNewCard(cardName, cardNumber);
     await basketPage.getOrderSummary();
     await expect(basketPage.confirmationDiv).toBeDisplayed();
-    await browser.pause(3000);
   });
 });

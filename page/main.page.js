@@ -14,17 +14,6 @@ class MainPage extends BasePage {
   get closeDialogBtn(){
     return new Button($('//a[contains(@aria-label, "dismiss cookie message")]'), "close dialog button");
   }
-  get addToBasketBtn() {
-    return new Button(
-      $("//mat-grid-tile[1]//button"),
-      "first add to basket button on the page"
-    );
-  }
-  //maybe need create header class for navigation button etc
-  get basketBtn() {
-    return new Button($('//button[@routerlink = "/basket"]'), "basket button");
-  }
-
   async open(url) {
     await allure.addStep(`Try to open ${url}`);
     await super.open(url);
@@ -41,12 +30,6 @@ class MainPage extends BasePage {
     await allure.addStep(`Try to click on the ${this.loginBtn}`);
     await this.loginBtn.click();
     await allure.endStep(`passed`);
-  }
-  async addToBasketItem() {
-    await this.addToBasketBtn.click();
-  }
-  async goToBasket() {
-    await this.basketBtn.click();
   }
 }
 export default new MainPage();

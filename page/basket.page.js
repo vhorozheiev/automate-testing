@@ -4,6 +4,18 @@ import Button from "../elements/button.js";
 import Div from "../elements/div.js";
 
 class BasketPage extends BasePage {
+  get addToBasketFirstItemBtn() {
+    return new Button($("//mat-grid-tile[1]//button"),"first add to basket button on the page");
+  }
+  get addToBasketSecondItemBtn() {
+    return new Button($("//mat-grid-tile[2]//button"),"first add to basket button on the page");
+  }
+  get basketBtn() {
+    return new Button($('//button[@routerlink = "/basket"]'), "basket button");
+  }
+  get removeItemBtn(){
+    return new Button($('//*[@data-icon="trash-alt"]'), "remove button");
+  }
   get checkOutBtn() {
     return new Button($('//button[@id = "checkoutButton"]'), "checkout button");
   }
@@ -67,7 +79,16 @@ class BasketPage extends BasePage {
   get confirmationDiv(){
     return new Div($('//div[@class = "confirmation"]'), "div with confirm text about order");
   }
-
+  async addToBasketItem() {
+    await this.addToBasketFirstItemBtn.click();
+    await this.addToBasketSecondItemBtn.click();
+  }
+  async goToBasket() {
+    await this.basketBtn.click();
+  }
+  async removeItemFromBasket(){
+    await this.removeItemBtn.click();
+  }
   async clickToCheckOutButton() {
     await this.checkOutBtn.waitForDisplayed();
     await this.checkOutBtn.click();
