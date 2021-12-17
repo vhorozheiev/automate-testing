@@ -2,6 +2,7 @@ import Input from "../elements/input.js";
 import BasePage from "../base/basePage.js";
 import Button from "../elements/button.js";
 import Div from "../elements/div.js";
+import Select from "../elements/select.js";
 
 class BasketPage extends BasePage {
   get addToBasketFirstItemBtn() {
@@ -65,7 +66,16 @@ class BasketPage extends BasePage {
     return new Input($('//div[@role = "region"]//input[contains(@id, "mat-input")][contains(@type, "text")]'), "card name input");
   }
   get cardNumberInput(){
-    return new Input($('//div[@role = "region"]//input[contains(@id, "mat-input")][contains(@type, "number")]'), "card name input");
+    return new Input($('//div[@role = "region"]//input[contains(@id, "mat-input")][contains(@type, "number")]'), "card number input");
+  }
+  get expiryMonthSelect(){
+    return new Select($('//div[@role = "region"]//mat-form-field[3]//select'), "expiry month select");
+  }
+  get expiryYearSelect(){
+    return new Select($('//div[@role = "region"]//mat-form-field[4]//select'), "expiry year select");
+  }
+  get submitNewCardBtn(){
+    return new Button ($('//button[@id = "submitButton"]'), "submit new card button");
   }
   get paymentOptionRadioBtn(){
     return new Button($('//mat-table//label'), "radio button for select a card")
@@ -121,6 +131,9 @@ class BasketPage extends BasePage {
     await this.addNewCardBtn.click();
     await this.cardNameInput.setValue(cardName);
     await this.cardNumberInput.setValue(cardNumber);
+    await this.expiryMonthSelect.selectByAttribute("value", "7");
+    await this.expiryYearSelect.selectByAttribute("value", "2080");
+    await this.submitNewCardBtn.click();
     await this.paymentOptionRadioBtn.click();
     await this.continuePaymentOptionBtn.click();
   }

@@ -14,8 +14,8 @@ let state = chance.state();
 let cardName = chance.word({ length: 5 });
 let cardNumber = chance.cc();
 
-describe("Customer feedback", () => {
-  it("should to add customer feedback with rating 3", async () => {
+describe("Purchase flow", () => {
+  it("Add/remove items to the basket and complete purchase flow", async () => {
     await loginPage.open(`http://localhost:3000/#/login`);
     await loginPage.loginIn("user@test.com", "123qwe");
     await mainPage.open(`http://localhost:3000/#/`);
