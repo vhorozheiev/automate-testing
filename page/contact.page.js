@@ -30,22 +30,32 @@ class ContactPage extends BasePage {
     return new Div($("simple-snack-bar.mat-simple-snackbar"));
   }
   async openFeedback() {
+    await allure.addStep(`Try to open feedback page`)
     await this.customerFeedbackBtn.waitForDisplayed();
     await this.customerFeedbackBtn.click();
+    await allure.endStep(`passed`);
   }
   async writeComment(text) {
+    await allure.addStep(`Try to write a comment`)
     await this.commentInput.setValue(text);
+    await allure.endStep(`passed`);
   }
   async setRating(target, duration) {
+    await allure.addStep(`Try to set rating to 3 stars`)
     await this.ratingSlider.setRating(target, duration);
+    await allure.endStep(`passed`);
   }
   async getCaptchResult() {
+    await allure.addStep(`Try to input captcha`)
     let captcha = await this.captcha.getText();
     let answer = await eval(captcha);
     await this.captchaControl.setValue(answer);
+    await allure.endStep(`passed`);
   }
   async clickSubmit() {
+    await allure.addStep(`Try to click to submit button for add feedback`)
     await this.submitBtn.click();
+    await allure.endStep(`passed`);
   }
 }
 

@@ -105,28 +105,41 @@ class BasketPage extends BasePage {
     return new Div($('//div[@class = "confirmation"]'), "div with confirm text about order");
   }
   async addToBasketItem() {
+    await allure.addStep(`Try to add two items in to a basket`)
     await this.addToBasketFirstItemBtn.click();
     await this.addToBasketSecondItemBtn.click();
+    await allure.endStep(`passed`);
   }
   async addToBasketLastItems(){
+    await allure.addStep(`Try to add two last items in to a basket`)
     await this.addToBasketLastItemFirst.click();
     await this.addToBasketLastItemSecond.click();
+    await allure.endStep(`passed`);
   }
   async goToBasket() {
+    await allure.addStep(`Try to open a basket`)
     await this.basketBtn.click();
+    await allure.endStep(`passed`);
   }
   async removeItemFromBasket(){
+    await allure.addStep(`Try to remove item from basket`)
     await this.removeItemBtn.click();
+    await allure.endStep(`passed`);
   }
   async clickToCheckOutButton() {
+    await allure.addStep(`Try to click checkout button`)
     await this.checkOutBtn.waitForDisplayed();
     await this.checkOutBtn.click();
+    await allure.endStep(`passed`);
   }
   async clickAddNewAddressButton() {
+    await allure.addStep(`Try to click add new address button`)
     await this.addNewAddressBtn.waitForDisplayed();
     await this.addNewAddressBtn.click();
+    await allure.endStep(`passed`);
   }
   async addNewAddressFillForm(country,name,mobileNumber,zipCode,address,city,state) {
+    await allure.addStep(`Try to fill form for add new address`)
     await this.countryInput.setValue(country);
     await this.nameInput.setValue(name);
     await this.mobileNumberInput.setValue(mobileNumber);
@@ -139,14 +152,18 @@ class BasketPage extends BasePage {
     await this.addressRadioBtn.click();
     await this.continuePaymentBtn.waitForDisplayed();
     await this.continuePaymentBtn.click();
+    await allure.endStep(`passed`);
   }
   async chooseDeliverySpeed() {
+    await allure.addStep(`Try to choose speed delivery option`)
     await this.chooseSpeedDeliveryBtn.click();
     await this.continueDeliveryMethodBtn.waitForDisplayed();
     await this.continueDeliveryMethodBtn.isClickable();
     await this.continueDeliveryMethodBtn.click();
+    await allure.endStep(`passed`);
   }
   async addNewCard(cardName, cardNumber){
+    await allure.addStep(`Try to add new card`)
     await this.addNewCardBtn.click();
     await this.cardNameInput.setValue(cardName);
     await this.cardNumberInput.setValue(cardNumber);
@@ -155,15 +172,20 @@ class BasketPage extends BasePage {
     await this.submitNewCardBtn.click();
     await this.paymentOptionRadioBtn.click();
     await this.continuePaymentOptionBtn.click();
+    await allure.endStep(`passed`);
   }
   async getOrderSummary(){
+    await allure.addStep(`Try to get order`)
     await this.getOrderBtn.click();
+    await allure.endStep(`passed`);
   }
   async goToMainPage(){
+    await allure.addStep(`Try to check that last item status is a SOLD OUT`)
     await browser.pause(2000);
     await this.searchBtn.waitForDisplayed();
     await this.searchBtn.isClickable();
     await this.searchBtn.click();
+    await allure.endStep(`passed`);
   }
 }
 export default new BasketPage();

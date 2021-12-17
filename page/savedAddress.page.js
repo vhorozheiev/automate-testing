@@ -13,10 +13,13 @@ class RecyclePage extends BasePage {
         return new Button($('//button[@id = "submitButton"]'), "submit button");
       }
     async navigateToSavedAddress(){
+        await allure.addStep(`Try to go saved address page`)
         await this.ordersPaymentBtn.click();
         await this.mySavedAddressBtn.click();
+        await allure.endStep(`passed`);
     }
     async addNewAddressFillForm(country,name,mobileNumber,zipCode,address,city) {
+        await allure.addStep(`Try to fill form for new address`)
         await basketPage.countryInput.setValue(country);
         await basketPage.nameInput.setValue(name);
         await basketPage.mobileNumberInput.setValue(mobileNumber);
@@ -24,6 +27,7 @@ class RecyclePage extends BasePage {
         await basketPage.addressInput.setValue(address);
         await basketPage.cityInput.setValue(city);
         await this.submitBtn.isClickable();
+        await allure.endStep(`passed`);
     }
 }
 
