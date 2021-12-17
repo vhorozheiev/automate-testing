@@ -12,7 +12,7 @@ let address = chance.address();
 let city = chance.city();
 let state = chance.state();
 let cardName = chance.word({ length: 5 });
-let cardNumber = chance.cc({type: 'Mastercard'});let cardNumber = chance.cc({type: 'Mastercard'});
+let cardNumber = chance.cc({type: 'Mastercard'});
 
 describe("Purchase flow", () => {
   it("Add/remove items to the basket and complete purchase flow", async () => {

@@ -17,7 +17,7 @@ let cardNumber = chance.cc({type: 'Mastercard'});
 describe("Buy last item", () => {
   it("Buy last item and chech their status", async () => {
     await loginPage.open(`http://localhost:3000/#/login`);
-    await loginPage.loginIn("user2@test.com", "123qwe");
+    await loginPage.loginIn("user@test.com", "123qwe");
     await mainPage.open(`http://localhost:3000/#/`);
     await basketPage.addToBasketLastItems();
     await basketPage.goToBasket();
