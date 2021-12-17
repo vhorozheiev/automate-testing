@@ -22,7 +22,6 @@ describe("Purchase flow", () => {
     await basketPage.addToBasketItem();
     await basketPage.goToBasket();
     await basketPage.removeItemFromBasket();
-    await browser.pause(2000);
     await basketPage.clickToCheckOutButton();
     await basketPage.clickAddNewAddressButton();
     await basketPage.addNewAddressFillForm(country,name,mobileNumber,zipCode,address,city,state);
