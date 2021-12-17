@@ -5,11 +5,26 @@ import Div from "../elements/div.js";
 import Select from "../elements/select.js";
 
 class BasketPage extends BasePage {
+  get searchBtn(){
+    return new Button($('//button[@routerlink="/search"]'), "search button");
+  }
   get addToBasketFirstItemBtn() {
     return new Button($("//mat-grid-tile[1]//button"),"first add to basket button on the page");
   }
   get addToBasketSecondItemBtn() {
-    return new Button($("//mat-grid-tile[2]//button"),"first add to basket button on the page");
+    return new Button($("//mat-grid-tile[2]//button"),"second add to basket button on the page");
+  }
+  get addToBasketLastItemFirst(){
+    return new Button($("//mat-grid-tile[4]//button"),"first last item add to basket button on the page");
+  }
+  get addToBasketLastItemSecond(){
+    return new Button($("//mat-grid-tile[9]//button"),"second last item add to basket button on the page");
+  }
+  get soldOutTitleForFirstLastItem(){
+    return new Div($('//mat-grid-tile[4]//div[contains(@class, "ribbon-sold")]'), 'sold out title');
+  }
+  get soldOutTitleForSecondtLastItem(){
+    return new Div($('//mat-grid-tile[9]//div[contains(@class, "ribbon-sold")]'), 'sold out title');
   }
   get basketBtn() {
     return new Button($('//button[@routerlink = "/basket"]'), "basket button");
@@ -78,7 +93,7 @@ class BasketPage extends BasePage {
     return new Button ($('//button[@id = "submitButton"]'), "submit new card button");
   }
   get paymentOptionRadioBtn(){
-    return new Button($('//mat-table//label'), "radio button for select a card")
+    return new Button($('//mat-table//label'), "radio button for select a card");
   }
   get continuePaymentOptionBtn(){
     return new Button($('//button[@aria-label = "Proceed to review"]'), "payment option continue button ");
@@ -92,6 +107,10 @@ class BasketPage extends BasePage {
   async addToBasketItem() {
     await this.addToBasketFirstItemBtn.click();
     await this.addToBasketSecondItemBtn.click();
+  }
+  async addToBasketLastItems(){
+    await this.addToBasketLastItemFirst.click();
+    await this.addToBasketLastItemSecond.click();
   }
   async goToBasket() {
     await this.basketBtn.click();
@@ -139,6 +158,12 @@ class BasketPage extends BasePage {
   }
   async getOrderSummary(){
     await this.getOrderBtn.click();
+  }
+  async goToMainPage(){
+    await browser.pause(2000);
+    await this.searchBtn.waitForDisplayed();
+    await this.searchBtn.isClickable();
+    await this.searchBtn.click();
   }
 }
 export default new BasketPage();

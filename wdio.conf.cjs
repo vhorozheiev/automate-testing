@@ -31,7 +31,8 @@ exports.config = {
     //"./test/specs/editProfileTest.js",
     //"./test/specs/apiLoginTest.js",
     //"./test/specs/positiveCustomerFeedbackTest.js",
-    "./test/specs/purchaseFlowTest.js",
+    //"./test/specs/purchaseFlowTest.js",
+    //"./test/specs/buyLastItems.js",
   ],
   // Patterns to exclude.
   exclude: [
