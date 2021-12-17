@@ -36,6 +36,22 @@ exports.config = {
     //"./test/specs/resgistrationUserPositive.js",
     //"./test/specs/resgistrationUserNegative.js",
   ],
+  suites: {
+    login: [
+        './test/specs/apiLoginTest.js',
+        './test/specs/negativeLoginTest.js',
+        './test/specs/positiveLoginTets.js',
+    ],
+    registration: [
+        './test/specs/resgistrationUserNegative.js',
+        './test/specs/resgistrationUserPositive.js',
+    ],
+    purchase:[
+        './test/specs/apiLoginTest.js',
+        './test/specs/purchaseFlowTest.js',
+        './test/specs/buyLastItems.js',
+    ]
+},
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
