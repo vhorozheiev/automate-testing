@@ -6,10 +6,7 @@ import Div from "../elements/div.js";
 
 class ContactPage extends BasePage {
   get customerFeedbackBtn() {
-    return new Button(
-      $("a[routerlink= '/contact']"),
-      "customer feedback button"
-    );
+    return new Button( $("a[routerlink= '/contact']"), "customer feedback button");
   }
   get commentInput() {
     return new Input($("textarea#comment"), "comment's textarea field");

@@ -1,6 +1,6 @@
-import mainPage from "../../page/main.page.js";
-import loginPage from "../../page/login.page.js";
-import basketPage from "../../page/basket.page.js";
+import mainPage from "../../../page/main.page.js";
+import loginPage from "../../../page/login.page.js";
+import basketPage from "../../../page/basket.page.js";
 import { Chance } from "chance";
 
 let chance = new Chance();

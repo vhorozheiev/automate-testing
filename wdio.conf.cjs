@@ -23,35 +23,57 @@ exports.config = {
   specs: [
     //create user with user@test.com and pass - user123
     //you need create new user before run this test
-    //"./test/specs/apiLoginTest.js",
-    //"./test/specs/positiveLoginTets.js",
-    //"./test/specs/negativeLoginTest.js",
-    //"./test/specs/openSocialLinkTest.js",
-    //"./test/specs/editProfileTest.js",
-    //"./test/specs/customerFeedbackTest.js",
-    //"./test/specs/purchaseFlowTest.js",
-    //"./test/specs/buyLastItems.js",
-    //"./test/specs/recycleNegativeTest.js",
-    //"./test/specs/addNewAddressNegativeTest.js",
-    //"./test/specs/resgistrationUserPositive.js",
-    //"./test/specs/resgistrationUserNegative.js",
+    "./test/specs/api/apiLoginTest.js",
+    "./test/specs/api/apiAddNewAdress.js",
+    "./test/specs/api/apiAddCard.js",
+
+    "./test/specs/positiveUI/positiveLoginTets.js",
+    "./test/specs/positiveUI/openSocialLinkTest.js",
+    "./test/specs/positiveUI/buyLastItems.js",
+    "./test/specs/positiveUI/purchaseFlowTest.js",
+    "./test/specs/positiveUI/resgistrationUserPositive.js",
+    "./test/specs/positiveUI/customerFeedbackTest.js",
+    "./test/specs/positiveUI/editProfileTest.js",
+
+    "./test/specs/negativeUI/negativeLoginTest.js",
+    "./test/specs/negativeUI/resgistrationUserNegative.js",
+    "/test/specs/negativeUI/recycleNegativeTest.js",
+    "./test/specs/negativeUI/addNewAddressNegativeTest.js",
   ],
   suites: {
     login: [
-        './test/specs/apiLoginTest.js',
-        './test/specs/negativeLoginTest.js',
-        './test/specs/positiveLoginTets.js',
+      "./test/specs/negativeUI/negativeLoginTest.js",
+      "./test/specs/positiveUI/positiveLoginTets.js",
     ],
     registration: [
-        './test/specs/resgistrationUserNegative.js',
-        './test/specs/resgistrationUserPositive.js',
+      "./test/specs/positiveUI/resgistrationUserPositive.js",
+      "./test/specs/negativeUI/resgistrationUserNegative.js",
     ],
-    purchase:[
-        './test/specs/apiLoginTest.js',
-        './test/specs/purchaseFlowTest.js',
-        './test/specs/buyLastItems.js',
-    ]
-},
+    purchase: [
+      "./test/specs/positiveUI/purchaseFlowTest.js",
+      "./test/specs/positiveUI/buyLastItems.js",
+    ],
+    api: [
+      "./test/specs/api/apiLoginTest.js",
+      "./test/specs/api/apiAddNewAdress.js",
+      "./test/specs/api/apiAddCard.js",
+    ],
+    positive: [
+      "./test/specs/positiveUI/positiveLoginTets.js",
+      "./test/specs/positiveUI/openSocialLinkTest.js",
+      "./test/specs/positiveUI/buyLastItems.js",
+      "./test/specs/positiveUI/purchaseFlowTest.js",
+      "./test/specs/positiveUI/resgistrationUserPositive.js",
+      "./test/specs/positiveUI/customerFeedbackTest.js",
+      "./test/specs/positiveUI/editProfileTest.js",
+    ],
+    negative: [
+      "./test/specs/negativeUI/negativeLoginTest.js",
+      "./test/specs/negativeUI/resgistrationUserNegative.js",
+      "./test/specs/negativeUI/recycleNegativeTest.js",
+      "./test/specs/negativeUI/addNewAddressNegativeTest.js",
+    ],
+  },
   // Patterns to exclude.
   exclude: [
     // 'path/to/excluded/files'
@@ -79,7 +101,7 @@ exports.config = {
   // https://saucelabs.com/platform/platform-configurator
   //
   capabilities: [
-    { maxInstances: 1, browserName: "chrome", acceptInsecureCerts: true },
+    { maxInstances: 10, browserName: "chrome", acceptInsecureCerts: true },
     //{ maxInstances: 10, browserName: "firefox", acceptInsecureCerts: true },
   ],
   //

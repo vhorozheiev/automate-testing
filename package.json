@@ -25,6 +25,9 @@
     "login": "wdio run wdio.conf.cjs --suite login && npx kill-port 4444",
     "registration": "wdio run wdio.conf.cjs --suite registration && npx kill-port 4444",
     "purchase": "wdio run wdio.conf.cjs --suite purchase && npx kill-port 4444",
+    "api": "wdio run wdio.conf.cjs --suite api && npx kill-port 4444",
+    "positive": "wdio run wdio.conf.cjs --suite positive && npx kill-port 4444",
+    "negative": "wdio run wdio.conf.cjs --suite negative && npx kill-port 4444",
     "allure": "./node_modules/.bin/allure generate allure-results -o allure-report --clean && allure open"
   }
 }

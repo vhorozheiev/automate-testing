@@ -1,6 +1,6 @@
-import loginPage from "../../page/login.page.js";
-import mainPage from "../../page/main.page.js";
-import userRegistrationPage from "../../page/userRegistration.page.js";
+import loginPage from "../../../page/login.page.js";
+import mainPage from "../../../page/main.page.js";
+import userRegistrationPage from "../../../page/userRegistration.page.js";
 import { Chance } from "chance";
 
 
@@ -12,16 +12,12 @@ let option = "Mother's maiden name?";
 
 describe("Register new user", () => {
   it("should register new user with valid credentials", async () => {
-    //register new user
     await loginPage.open(`http://localhost:3000/#/login`);
     await userRegistrationPage.addNewCustomer();
     await userRegistrationPage.fillRegistrationForm(email, pass, secureAnswer, option);
     await userRegistrationPage.registrationButtonClick();
     await loginPage.loginIn(email, pass);
     await mainPage.openAccountMenu();
-    //expect to positive test
     await expect (userRegistrationPage.logoutButton).toBeClickable();
-    //await expect(await userRegistrationPage.logoutButton.isClickable()).toEqual(true);
-    //await expect($("#navbarLogoutButton")).toBeDisplayed();
   });
 });
