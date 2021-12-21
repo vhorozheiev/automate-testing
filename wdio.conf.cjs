@@ -92,15 +92,15 @@ exports.config = {
   // and 30 processes will get spawned. The property handles how many capabilities
   // from the same test should run tests.
   //
-  maxInstances: 10,
+  maxInstances: 5,
   //
   // If you have trouble getting all important capabilities together, check out the
   // Sauce Labs platform configurator - a great tool to configure your capabilities:
   // https://saucelabs.com/platform/platform-configurator
   //
   capabilities: [
-    { maxInstances: 10, browserName: "chrome", acceptInsecureCerts: true },
-    //{ maxInstances: 10, browserName: "firefox", acceptInsecureCerts: true },
+    { maxInstances: 5, browserName: "chrome", acceptInsecureCerts: true },
+    //{ maxInstances: 5, browserName: "firefox", acceptInsecureCerts: true },
   ],
   //
   // ===================
@@ -150,7 +150,7 @@ exports.config = {
   // your test setup with almost no effort. Unlike plugins, they don't add new
   // commands. Instead, they hook themselves up into the test process.
   // ["selenium-standalone"],
-  services: ["chromedriver"],
+  services: ["chromedriver"], // ["selenium-standalone"],
 
   // Framework you want to run your specs with.
   // The following are supported: Mocha, Jasmine, and Cucumber
@@ -280,11 +280,7 @@ exports.config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  afterTest: async function (
-    test,
-    context,
-    { error, result, duration, passed, retries }
-  ) {
+  afterTest: async function ( test, context, { error, result, duration, passed, retries }) {
     if (!passed) {
       let screen = await browser.takeScreenshot();
       await allure.addAttachment(
