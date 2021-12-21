@@ -21,8 +21,6 @@ exports.config = {
   // will be called from there.
   //
   specs: [
-    //create user with user@test.com and pass - user123
-    //you need create new user before run this test
     "./test/specs/api/apiLoginTest.js",
     "./test/specs/api/apiAddNewAdress.js",
     "./test/specs/api/apiAddCard.js",

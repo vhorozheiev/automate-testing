@@ -30,7 +30,7 @@ class spcialPage extends BasePage {
     await allure.endStep(`passed`);
   }
   async goToFacebook() {
-    await allure.addStep(`Try to click on the ${this.facebookBtn} to open facebook`)
+    await allure.addStep(`Try to click on the ${this.facebookBtn} to open facebook`);
     await this.facebookBtn.click();
     await allure.endStep(`passed`);
   }
