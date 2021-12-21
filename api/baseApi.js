@@ -17,11 +17,11 @@ class BaseAPI {
     console.log(`sending DELETE request to ${url}`);
     return await superagent.delete(url);
   }
-  async getToken(){
-    console.log("get token to authorised");
-    let token = await superagent.get("http://localhost:3000/rest/user/login");
-    console.log(JSON.stringify(token));
-  }
+  // async getToken(){
+  //   console.log("get token to authorised");
+  //   let token = await superagent.get("http://localhost:3000/rest/user/login");
+  //   console.log(JSON.stringify(token));
+  // }
 }
 
 export default new BaseAPI();
