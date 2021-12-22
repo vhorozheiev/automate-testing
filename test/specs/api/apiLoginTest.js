@@ -1,7 +1,7 @@
 import baseApi from "../../../api/baseApi.js";
 import { expect } from "chai";
 
-const email = "user@test.com";
+const email = "user100@test.com";
 const password = "123qwe";
 //get array with security questions
 const setSecurityQuestion = await baseApi.GET(
