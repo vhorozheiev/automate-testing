@@ -28,7 +28,7 @@ class ContactPage extends BasePage {
   }
   async openFeedback() {
     await allure.addStep(`Try to open feedback page`)
-    await this.customerFeedbackBtn.waitForDisplayed();
+    await this.customerFeedbackBtn.waitForClickable();
     await this.customerFeedbackBtn.click();
     await allure.endStep(`passed`);
   }

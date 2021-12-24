@@ -24,7 +24,7 @@ export default class BaseElement {
     await allure.addStep(`is ${this.elementName} displayed?`);
     return await this.wdioElement.isDisplayed();
   }
-  async waitForDisplayed() {
+  async waitForClickable() {
     await allure.addStep(`wait until this ${this.elementName} to be displayed`);
     await browser.waitUntil(async () => await this.wdioElement.isClickable());
   }

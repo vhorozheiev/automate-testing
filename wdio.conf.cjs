@@ -21,22 +21,21 @@ exports.config = {
   // will be called from there.
   //
   specs: [
-    "./test/specs/api/apiLoginTest.js",
-    "./test/specs/api/apiAddNewAdress.js",
-    "./test/specs/api/apiAddCard.js",
-
-    "./test/specs/positiveUI/positiveLoginTets.js",
-    "./test/specs/positiveUI/openSocialLinkTest.js",
-    "./test/specs/positiveUI/buyLastItems.js",
-    "./test/specs/positiveUI/purchaseFlowTest.js",
-    "./test/specs/positiveUI/resgistrationUserPositive.js",
-    "./test/specs/positiveUI/customerFeedbackTest.js",
-    "./test/specs/positiveUI/editProfileTest.js",
-
-    "./test/specs/negativeUI/negativeLoginTest.js",
-    "./test/specs/negativeUI/resgistrationUserNegative.js",
-    "/test/specs/negativeUI/recycleNegativeTest.js",
-    "./test/specs/negativeUI/addNewAddressNegativeTest.js",
+    // "./test/specs/api/apiLoginTest.js",
+    //"./test/specs/api/apiAddNewAdress.js",
+    // "./test/specs/api/apiAddCard.js",
+    // "./test/specs/positiveUI/positiveLoginTets.js",
+     "./test/specs/positiveUI/openSocialLinkTest.js",
+    // "./test/specs/positiveUI/buyLastItems.js",
+    // "./test/specs/positiveUI/purchaseFlowTest.js",
+    // "./test/specs/positiveUI/resgistrationUserPositive.js",
+    // "./test/specs/positiveUI/customerFeedbackTest.js",
+    // "./test/specs/positiveUI/editProfileTest.js",
+    // "./test/specs/negativeUI/negativeLoginTest.js",
+    // "./test/specs/negativeUI/resgistrationUserNegative.js",
+    // "/test/specs/negativeUI/recycleNegativeTest.js",
+    // "./test/specs/negativeUI/addNewAddressNegativeTest.js",
+    //"./test/specs/api/getToken.js"
   ],
   suites: {
     login: [
@@ -99,7 +98,7 @@ exports.config = {
   // https://saucelabs.com/platform/platform-configurator
   //
   capabilities: [
-    { maxInstances: 5, browserName: "chrome", acceptInsecureCerts: true },
+    { maxInstances: 2, browserName: "chrome", acceptInsecureCerts: true },
     //{ maxInstances: 5, browserName: "firefox", acceptInsecureCerts: true },
   ],
   //
@@ -280,7 +279,11 @@ exports.config = {
    * @param {Boolean} result.passed    true if test has passed, otherwise false
    * @param {Object}  result.retries   informations to spec related retries, e.g. `{ attempts: 0, limit: 0 }`
    */
-  afterTest: async function ( test, context, { error, result, duration, passed, retries }) {
+  afterTest: async function (
+    test,
+    context,
+    { error, result, duration, passed, retries }
+  ) {
     if (!passed) {
       let screen = await browser.takeScreenshot();
       await allure.addAttachment(

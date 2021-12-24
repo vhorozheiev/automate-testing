@@ -38,7 +38,7 @@ class UserRegistration extends BasePage {
   }
   async addNewCustomer() {
     await allure.addStep(`Try to add new customer`)
-    await (await this.getBaseElement()).waitForDisplayed();
+    await (await this.getBaseElement()).waitForClickable();
     await this.addNewCustomerLink.click();
     await allure.endStep(`passed`);
   }

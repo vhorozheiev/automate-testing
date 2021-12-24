@@ -128,13 +128,13 @@ class BasketPage extends BasePage {
   }
   async clickToCheckOutButton() {
     await allure.addStep(`Try to click checkout button`)
-    await this.checkOutBtn.waitForDisplayed();
+    await this.checkOutBtn.waitForClickable();
     await this.checkOutBtn.click();
     await allure.endStep(`passed`);
   }
   async clickAddNewAddressButton() {
     await allure.addStep(`Try to click add new address button`)
-    await this.addNewAddressBtn.waitForDisplayed();
+    await this.addNewAddressBtn.waitForClickable();
     await this.addNewAddressBtn.click();
     await allure.endStep(`passed`);
   }
@@ -147,18 +147,17 @@ class BasketPage extends BasePage {
     await this.addressInput.setValue(address);
     await this.cityInput.setValue(city);
     await this.stateInput.setValue(state);
-    await this.submitBtn.waitForDisplayed();
+    await this.submitBtn.waitForClickable();
     await this.submitBtn.click();
     await this.addressRadioBtn.click();
-    await this.continuePaymentBtn.waitForDisplayed();
+    await this.continuePaymentBtn.waitForClickable();
     await this.continuePaymentBtn.click();
     await allure.endStep(`passed`);
   }
   async chooseDeliverySpeed() {
     await allure.addStep(`Try to choose speed delivery option`)
     await this.chooseSpeedDeliveryBtn.click();
-    await this.continueDeliveryMethodBtn.waitForDisplayed();
-    await this.continueDeliveryMethodBtn.isClickable();
+    await this.continueDeliveryMethodBtn.waitForClickable();
     await this.continueDeliveryMethodBtn.click();
     await allure.endStep(`passed`);
   }
@@ -182,8 +181,7 @@ class BasketPage extends BasePage {
   async goToMainPage(){
     await allure.addStep(`Try to check that last item status is a SOLD OUT`)
     await browser.pause(2000);
-    await this.searchBtn.waitForDisplayed();
-    await this.searchBtn.isClickable();
+    await this.searchBtn.waitForClickable();
     await this.searchBtn.click();
     await allure.endStep(`passed`);
   }

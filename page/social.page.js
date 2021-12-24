@@ -15,9 +15,6 @@ class spcialPage extends BasePage {
   get facebookLogoImage(){
     return new Image($('//i[contains(@class, "logo")]'), "facebook logo image");
   }
-  async getBaseElement() {
-    return new Button(this.aboutUsBtn, "Base element");
-  }
   async openSideNav() {
     await allure.addStep(`Try to open side navigation menu`);
     await this.sideNavBtn.click();
@@ -25,7 +22,7 @@ class spcialPage extends BasePage {
   }
   async openAboutUs() {
     await allure.addStep(`Try to open 'About us' page`);
-    await (await this.getBaseElement()).waitForDisplayed();
+    await this.aboutUsBtn.waitForClickable();
     await this.aboutUsBtn.click();
     await allure.endStep(`passed`);
   }
