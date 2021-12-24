@@ -12,10 +12,12 @@ let zipCode = chance.zip();
 let address = chance.address();
 let city = chance.city();
 
+before(async() =>{
+  await loginPage.open(`http://localhost:3000/#/login`);
+  await loginPage.loginIn("user@test.com", "123qwe");
+});
 describe("Add new address negative test", () => {
   it("couldn't add new address with invalid format mobile phone", async () => {
-    await loginPage.open(`http://localhost:3000/#/login`);
-    await loginPage.loginIn("user@test.com", "123qwe");
     await mainPage.openAccountMenu();
     await savedAddressPage.navigateToSavedAddress();
     await basketPage.clickAddNewAddressButton();

@@ -2,6 +2,9 @@ import contactPage from "../../../page/contact.page.js";
 import mainPage from "../../../page/main.page.js";
 import socialPage from "../../../page/social.page.js";
 
+before(async () => {
+  await mainPage.open(`http://localhost:3000/#/`);
+});
 describe("Customer feedback", () => {
   it("should to add customer feedback with rating 3", async () => {
     await mainPage.open(`http://localhost:3000/#/`);

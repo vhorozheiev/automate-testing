@@ -14,11 +14,13 @@ let state = chance.state();
 let cardName = chance.word({ length: 5 });
 let cardNumber = chance.cc({type: 'Mastercard'});
 
-describe("Buy last item", () => {
-  it("Buy last item and chech their status", async () => {
-    await loginPage.open(`http://localhost:3000/#/login`);
+before(async() =>{
+  await loginPage.open(`http://localhost:3000/#/login`);
     await loginPage.loginIn("user@test.com", "123qwe");
     await mainPage.open(`http://localhost:3000/#/`);
+});
+describe("Buy last item", () => {
+  it("Buy last item and chech their status", async () => {
     await basketPage.addToBasketLastItems();
     await basketPage.goToBasket();
     await basketPage.clickToCheckOutButton();

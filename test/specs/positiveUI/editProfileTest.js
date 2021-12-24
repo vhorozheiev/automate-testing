@@ -8,13 +8,13 @@ let userName = chance.first();
 let avatar = chance.avatar({ protocol: "https" });
 let defaultSrcValue ="http://localhost:3000/assets/public/images/uploads/default.svg";
 
-describe("Edit user profile", () => {
-  it("should change userName and photo", async () => {
-    await mainPage.open(`http://localhost:3000/#/`);
-    await mainPage.openAccountMenu();
-    await mainPage.navigateToLogin();
+before(async() =>{
+    await loginPage.open(`http://localhost:3000/#/login`);
     await loginPage.loginIn("user@test.com", "123qwe");
     await mainPage.openAccountMenu();
+});
+describe("Edit user profile", () => {
+  it("should change userName and photo", async () => {
     await userProfilePage.openUserProfile();
     await userProfilePage.changeUserName(userName);
     await expect(userProfilePage.userNameInput).toHaveElementProperty("value", userName);

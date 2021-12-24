@@ -1,41 +1,20 @@
 exports.config = {
-  //
-  // ====================
-  // Runner Configuration
-  // ====================
-  //
-  //
-  // ==================
-  // Specify Test Files
-  // ==================
-  // Define which test specs should run. The pattern is relative to the directory
-  // from which `wdio` was called.
-  //
-  // The specs are defined as an array of spec files (optionally using wildcards
-  // that will be expanded). The test for each spec file will be run in a separate
-  // worker process. In order to have a group of spec files run in the same worker
-  // process simply enclose them in an array within the specs array.
-  //
-  // If you are calling `wdio` from an NPM script (see https://docs.npmjs.com/cli/run-script),
-  // then the current working directory is where your `package.json` resides, so `wdio`
-  // will be called from there.
-  //
+
   specs: [
-    // "./test/specs/api/apiLoginTest.js",
-    //"./test/specs/api/apiAddNewAdress.js",
-    // "./test/specs/api/apiAddCard.js",
-    // "./test/specs/positiveUI/positiveLoginTets.js",
-     "./test/specs/positiveUI/openSocialLinkTest.js",
-    // "./test/specs/positiveUI/buyLastItems.js",
-    // "./test/specs/positiveUI/purchaseFlowTest.js",
-    // "./test/specs/positiveUI/resgistrationUserPositive.js",
-    // "./test/specs/positiveUI/customerFeedbackTest.js",
-    // "./test/specs/positiveUI/editProfileTest.js",
-    // "./test/specs/negativeUI/negativeLoginTest.js",
-    // "./test/specs/negativeUI/resgistrationUserNegative.js",
-    // "/test/specs/negativeUI/recycleNegativeTest.js",
-    // "./test/specs/negativeUI/addNewAddressNegativeTest.js",
-    //"./test/specs/api/getToken.js"
+    "./test/specs/api/apiCreateUser.js",
+    "./test/specs/api/apiAddNewAdress.js",
+    "./test/specs/api/apiAddCard.js",
+    "./test/specs/positiveUI/positiveLoginTets.js",
+    "./test/specs/positiveUI/openSocialLinkTest.js",
+    "./test/specs/positiveUI/buyLastItems.js",
+    "./test/specs/positiveUI/purchaseFlowTest.js",
+    "./test/specs/positiveUI/resgistrationUserPositive.js",
+    "./test/specs/positiveUI/customerFeedbackTest.js",
+    "./test/specs/positiveUI/editProfileTest.js",
+    "./test/specs/negativeUI/negativeLoginTest.js",
+    "./test/specs/negativeUI/resgistrationUserNegative.js",
+    "/test/specs/negativeUI/recycleNegativeTest.js",
+    "./test/specs/negativeUI/addNewAddressNegativeTest.js",
   ],
   suites: {
     login: [
@@ -98,7 +77,7 @@ exports.config = {
   // https://saucelabs.com/platform/platform-configurator
   //
   capabilities: [
-    { maxInstances: 2, browserName: "chrome", acceptInsecureCerts: true },
+    { maxInstances: 1, browserName: "chrome", acceptInsecureCerts: true },
     //{ maxInstances: 5, browserName: "firefox", acceptInsecureCerts: true },
   ],
   //

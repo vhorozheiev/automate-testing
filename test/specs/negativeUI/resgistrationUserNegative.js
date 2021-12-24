@@ -8,9 +8,11 @@ let pass = chance.string({ length: 4 });
 let secureAnswer = chance.color();
 let option = "Mother's maiden name?";
 
+before(async() =>{
+  await loginPage.open(`http://localhost:3000/#/login`);
+});
 describe("Register new user", () => {
   it("shouldn't register new user with invalid credentials", async () => {
-    await loginPage.open(`http://localhost:3000/#/login`);
     await userRegistrationPage.addNewCustomer();
     await userRegistrationPage.fillRegistrationForm(email, pass, secureAnswer, option);
     await expect (userRegistrationPage.errorMsg).toBeDisplayed();
