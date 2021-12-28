@@ -17,9 +17,9 @@ class BaseAPI {
     console.log(`sending DELETE request to ${url}`);
     return await superagent.delete(url).send(data).set("Authorization", `Bearer ${token}`);
   }
-  async getToken() {
+  async getToken(email, password) {
     console.log("get token to authorised");
-    let requestBody = { email: "user@test.com", password: "123qwe" };
+    let requestBody = { email, password};
     let response = await superagent.post(
       "http://localhost:3000/rest/user/login",requestBody);
     let token = response.body.authentication.token;
